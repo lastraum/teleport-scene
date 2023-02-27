@@ -24,30 +24,30 @@ export class TeleportStation extends Entity {
         engine.addEntity(this)
 
         executeTask(async()=>{
-            let res = await fetch("")
+            let res = await fetch("https://raw.githubusercontent.com/lastraum/teleport-scene/main/locations.json")
             let coords = await res.json()
-        })
+            this.locations = coords
 
-
-        this.display1 = new Display(this, useHotkeys, true)
-        this.display1.addComponentOrReplace(new Transform({
-            position: new Vector3(0, 1.75, -0.029),
-            rotation: Quaternion.Euler(0, 180, 0),
-            scale: new Vector3(0.45, 0.9, 0.1)
-        }))
-
-        this.display2 = new Display(this, useHotkeys, false)
-        this.display2.addComponentOrReplace(new Transform({
-            position: new Vector3(0, 1.75, 0.029),
-            scale: new Vector3(0.45, 0.9, 0.1)
-        }))
-        if (!useHotkeys) return
-        const input = Input.instance
-        input.subscribe("BUTTON_DOWN", ActionButton.PRIMARY, false, (e) => {
-            this.inputForScroll(false)
-        })
-        input.subscribe("BUTTON_DOWN", ActionButton.SECONDARY, false, (e) => {
-            this.inputForScroll(true)
+            this.display1 = new Display(this, useHotkeys, true)
+            this.display1.addComponentOrReplace(new Transform({
+                position: new Vector3(0, 1.75, -0.029),
+                rotation: Quaternion.Euler(0, 180, 0),
+                scale: new Vector3(0.45, 0.9, 0.1)
+            }))
+    
+            this.display2 = new Display(this, useHotkeys, false)
+            this.display2.addComponentOrReplace(new Transform({
+                position: new Vector3(0, 1.75, 0.029),
+                scale: new Vector3(0.45, 0.9, 0.1)
+            }))
+            if (!useHotkeys) return
+            const input = Input.instance
+            input.subscribe("BUTTON_DOWN", ActionButton.PRIMARY, false, (e) => {
+                this.inputForScroll(false)
+            })
+            input.subscribe("BUTTON_DOWN", ActionButton.SECONDARY, false, (e) => {
+                this.inputForScroll(true)
+            })
         })
     }
 

@@ -1,6 +1,9 @@
 import * as utils from '@dcl/ecs-scene-utils'
 
 
+let atlas = new Texture("https://raw.githubusercontent.com/lastraum/teleport-scene/main/src/modules/teleport/fw_brand_sprites.png")
+
+
 export class Display extends Entity {
 
     private parent;
@@ -65,7 +68,7 @@ export class Display extends Entity {
         )
 
         const displayTexture = new Material()
-        displayTexture.albedoTexture = new Texture("src/modules/teleport/fw_brand_sprites.png")
+        displayTexture.albedoTexture = atlas
         displayTexture.albedoColor = new Color3(1.5, 1.5, 1.5)
         displayTexture.transparencyMode = 1
         displayTexture.alphaTest = 0.3
