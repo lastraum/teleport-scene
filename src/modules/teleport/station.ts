@@ -4,6 +4,8 @@ export class TeleportStation extends Entity {
     private display1;
     private display2;
 
+    locations:any[]=[]
+
 
 
     /**
@@ -20,6 +22,11 @@ export class TeleportStation extends Entity {
         this.addComponentOrReplace(shape)
         this.addComponentOrReplace(transform)
         engine.addEntity(this)
+
+        executeTask(async()=>{
+            let res = await fetch("")
+            let coords = await res.json()
+        })
 
 
         this.display1 = new Display(this, useHotkeys, true)
